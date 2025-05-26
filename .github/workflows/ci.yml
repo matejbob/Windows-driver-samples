@@ -39,6 +39,13 @@ jobs:
           name: logs-${{ matrix.configuration }}-${{ matrix.platform }}
           path: _logs
 
+      - name: Archive everything
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: output-${{ matrix.configuration }}-${{ matrix.platform }}
+          path: .
+
   report:
     name: Generate global report
     runs-on: windows-2022
